@@ -81,6 +81,8 @@ def try_request(session, url, **kwargs):
                 log(f"HTTPS failed: {e}", "ERROR")
         else:
             log(f"Connection failed: {url}", "ERROR")
+    except Exception as e:
+        log(f"General error during request: {e}", "ERROR")
     return None
 
 def scan_url(url):
@@ -94,12 +96,9 @@ def scan_url(url):
             else:
                 test_url = url + "?" + "vuln=" + payload
 
-            try:
-                r = try_request(session, test_url, headers=HEADERS)
-                if r and payload in r.text:
-                    log(f"{category} vulnerability detected with payload: {payload}", "FOUND")
-            except Exception as e:
-                log(f"Error testing payload: {payload} -> {e}", "ERROR")
+            r = try_request(session, test_url, headers=HEADERS)
+            if r and payload in r.text:
+                log(f"{category} vulnerability detected with payload: {payload}", "FOUND")
 
 def extract_forms(url):
     try:
@@ -147,3 +146,4 @@ def run():
 # === Entry Point ===
 if __name__ == "__main__":
     run()
+
