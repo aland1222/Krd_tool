@@ -9,7 +9,7 @@ KRD CTF is a custom-built GUI toolkit for ethical hacking and CTF practice — b
 - 🧪 Web Exploit Scanner  
 - 🌐 IP Scanner  
 - 🕵️ Subfinder + HTTPX Integration  
-- 🚀 Vulnerability Scanner with 1000+ payloads  
+- 🚀 Vulnerability Scanner with 100+ payloads  
 
 ---
 
